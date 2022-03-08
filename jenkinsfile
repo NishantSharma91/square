@@ -3,9 +3,8 @@ node {
     checkout scm
   }
   stage('SonarQube Analysis') {
-    def scannerHome = tool 'SonarScanner';
     withSonarQubeEnv() {
-      sh "${scannerHome}\bin\linux-x86-64\sonar"
+      sh "./gradlew sonarqube"
     }
   }
 }
